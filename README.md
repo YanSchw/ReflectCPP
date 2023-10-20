@@ -7,8 +7,8 @@
 A small and simple C++ Reflection Library
 
 ## Main Features
-- Allocate any type of Class by its ID handle using std::new, if a default constructor is available
-- Access primitive ClassMembers without knowing during the ClassType during compile-time
+- Allocate any type of Class by its ID handle (using std::new), if a default constructor is available
+- Access primitive ClassMembers without knowing the ClassType during compile-time
 - Access RunTimeTypeInformation (**RTTI**) using little to none Boilerplate code  
 
 ## Examples
