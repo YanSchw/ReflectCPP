@@ -33,7 +33,7 @@ int main()
 }
 ```
 
-Access primitive ClassMembers without knowing during the ClassType during compile-time
+Access primitive ClassMembers without knowing the ClassType during compile-time
 ```C++
 #include "ReflectCPP.h"
 using namespace rfl;
