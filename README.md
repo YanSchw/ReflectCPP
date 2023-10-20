@@ -58,6 +58,7 @@ int main()
     {
         std::cout << It.m_Name << " " << (uint32_t)It.m_Type << " " << It.m_Offset << std::endl;
 
+        // Increment ClassMember variable indirectly...
         int& ref = It.GetFieldRefFromObject<int>(&inst);
         ref++;
     }
