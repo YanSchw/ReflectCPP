@@ -31,8 +31,19 @@ namespace rfl
     const Class Class::None = Class((ClassID) 0);
 
 
-    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int32_t>() { return FieldType::Int32; }
-    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int64_t>() { return FieldType::Int64; }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<bool>()           { return FieldType::Bool;      }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<char>()           { return FieldType::Char;      }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int8_t>()    { return FieldType::Int8;      }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int16_t>()   { return FieldType::Int16;     }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int32_t>()   { return FieldType::Int32;     }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int64_t>()   { return FieldType::Int64;     }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::uint8_t>()   { return FieldType::UInt8;     }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::uint16_t>()  { return FieldType::UInt16;    }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::uint32_t>()  { return FieldType::UInt32;    }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::uint64_t>()  { return FieldType::UInt64;    }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<float>()          { return FieldType::Float;     }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<double>()         { return FieldType::Double;    }
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<std::string>()    { return FieldType::StdString; }
 
     std::vector<Class> Class::GetAllClasses()
     {

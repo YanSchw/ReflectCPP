@@ -44,7 +44,7 @@ int main()
     std::cout << "Before: " << std::endl; inst.PrintFields();
     for (auto& It : fields)
     {
-        int64_t& ref = It.GetFieldRefFromObject<int64_t>(&inst);
+        int& ref = It.GetFieldRefFromObject<int>(&inst);
         ref++;
     }
     std::cout << "After: " << std::endl; inst.PrintFields();

@@ -42,8 +42,19 @@ namespace rfl
     enum class FieldType : uint32_t
     {
         None = 0,
+        Bool,
+        Char,
+        Int8,
+        Int16,
         Int32,
-        Int64
+        Int64,
+        UInt8,
+        UInt16,
+        UInt32,
+        UInt64,
+        Float,
+        Double,
+        StdString
     };
 
     struct Class
