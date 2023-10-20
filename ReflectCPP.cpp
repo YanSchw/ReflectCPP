@@ -31,6 +31,7 @@ namespace rfl
     const Class Class::None = Class((ClassID) 0);
 
 
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<void>()           { return FieldType::Void;      }
     template<> FieldType ClassField::GetFieldTypeFromTemplate<bool>()           { return FieldType::Bool;      }
     template<> FieldType ClassField::GetFieldTypeFromTemplate<char>()           { return FieldType::Char;      }
     template<> FieldType ClassField::GetFieldTypeFromTemplate<std::int8_t>()    { return FieldType::Int8;      }

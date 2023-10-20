@@ -42,6 +42,7 @@ namespace rfl
     enum class FieldType : uint32_t
     {
         None = 0,
+        Void,
         Bool,
         Char,
         Int8,
