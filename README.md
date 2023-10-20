@@ -7,12 +7,12 @@
 A small and simple C++ Reflection Library
 
 ## Main Features
-- Allocate any type of Class by its Id handle using std::new, if a default constructor is available
+- Allocate any type of Class by its ID handle using std::new, if a default constructor is available
 - Access primitive ClassMembers without knowing during the ClassType during compile-time
 - Access RunTimeTypeInformation (**RTTI**) using little to none Boilerplate code  
 
 ## Examples
-Allocate any type of Class by its Id handle, if a default constructor is available
+Allocate any type of Class by its ID handle, if a default constructor is available
 ```C++
 #include "ReflectCPP.h"
 using namespace rfl;
