@@ -70,6 +70,11 @@ namespace rfl
         return Class::None;
     }
 
+    void *Class::NewInstance() const
+    {
+        return ObjectFactory::Allocate(GetClassID());
+    }
+
     ClassReflector& ClassReflector::Create(Class cls)
     {
         ClassReflector::s_AllClasses[cls.GetClassID()] = std::make_unique<ClassReflector>();

@@ -85,6 +85,7 @@ namespace rfl
             return !operator==(id);
         }
 
+        [[nodiscard]] void* NewInstance() const;
 
         static std::vector<Class> GetAllClasses();
 
