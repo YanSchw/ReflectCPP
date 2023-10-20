@@ -30,6 +30,9 @@ namespace rfl
 
     const Class Class::None = Class((ClassID) 0);
 
+
+    template<> FieldType ClassField::GetFieldTypeFromTemplate<int>() { return FieldType::Int32; }
+
     std::vector<Class> Class::GetAllClasses()
     {
         std::vector<Class> out;
@@ -89,5 +92,15 @@ namespace rfl
     {
         return m_ClassName;
     }
+
+    void ClassReflector::AddField(const ClassField &field)
+    {
+        m_Fields.push_back(field);
+    }
+    std::vector<ClassField> ClassReflector::GetFields() const
+    {
+        return m_Fields;
+    }
+
 
 }

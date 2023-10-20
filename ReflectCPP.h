@@ -26,6 +26,7 @@
 */
 
 #include <string>
+#include <utility>
 #include <vector>
 #include <unordered_map>
 #include <memory>
@@ -33,8 +34,15 @@
 namespace rfl
 {
     struct Class;
+    struct ClassField;
     struct ClassReflector;
     using ClassID = std::uint64_t;
+
+    enum class FieldType : uint32_t
+    {
+        None = 0,
+        Int32
+    };
 
     struct Class
     {
@@ -90,14 +98,31 @@ namespace rfl
 
     };
 
+    struct ClassField
+    {
+        ClassField(FieldType type, std::string name, std::size_t offset)
+        : m_Type(type), m_Name(std::move(name)), m_Offset(offset) { }
+
+        template<class T>
+        static FieldType GetFieldTypeFromTemplate();
+
+        FieldType m_Type = FieldType::None;
+        std::string m_Name;
+        std::size_t m_Offset;
+    };
+
     struct ClassReflector
     {
         static ClassReflector& Create(Class cls);
 
         void SetClassName(const std::string& name);
         [[nodiscard]] std::string GetClassName() const;
+
+        void AddField(const ClassField& field);
+        [[nodiscard]] std::vector<ClassField> GetFields() const;
     private:
         std::string m_ClassName;
+        std::vector<ClassField> m_Fields;
 
         inline static std::unordered_map<ClassID, std::unique_ptr<ClassReflector>> s_AllClasses;
         friend struct Class;
@@ -131,6 +156,8 @@ namespace rfl
     };
 
 #define RFL_HASH(Value) ::std::hash<::std::string>()(Value)
+
+#define RFL_FIELD(ClassName, FType, FName) desc.AddField(::rfl::ClassField(::rfl::ClassField::GetFieldTypeFromTemplate<FType>(), #FName, offsetof(ClassName, FName)))
 
 #define RFL_CLASS_ID(ClassName, ClassId, ...)                           \
                                                                         \
