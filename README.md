@@ -6,6 +6,11 @@
 
 A small and simple C++ Reflection Library
 
+## Main Features
+- Allocate any type of Class by its Id handle using std::new, if a default constructor is available
+- Access primitive ClassMembers without knowing during the ClassType during compile-time
+- Access RunTimeTypeInformation (**RTTI**) using little to none Boilerplate code  
+
 ## Requirements
 - C++17 Compiler
 - Include the ReflectCPP.h anywhere you want to use it
