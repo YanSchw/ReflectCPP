@@ -30,6 +30,7 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
+#include <cassert>
 
 namespace rfl
 {
@@ -41,7 +42,8 @@ namespace rfl
     enum class FieldType : uint32_t
     {
         None = 0,
-        Int32
+        Int32,
+        Int64
     };
 
     struct Class
@@ -102,6 +104,14 @@ namespace rfl
     {
         ClassField(FieldType type, std::string name, std::size_t offset)
         : m_Type(type), m_Name(std::move(name)), m_Offset(offset) { }
+
+
+        template<class T>
+        T& GetFieldRefFromObject(void* obj)
+        {
+            assert(m_Type == GetFieldTypeFromTemplate<T>());
+            return *(T*)(void*)(std::size_t(obj) + m_Offset);
+        }
 
         template<class T>
         static FieldType GetFieldTypeFromTemplate();

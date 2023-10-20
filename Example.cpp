@@ -14,8 +14,15 @@ struct MyClass
 
     MyClass(int a)
     {
+        valueA = a;
     }
 
+    void PrintFields()
+    {
+        std::cout << "a: " << valueA << std::endl;
+        std::cout << "b: " << valueB << std::endl;
+        std::cout << "c: " << valueC << std::endl;
+    }
 
     int64_t somePadding = 1;
     int valueA = 10;
@@ -31,6 +38,17 @@ int main()
     {
         std::cout << It.m_Name << " " << (uint32_t)It.m_Type << " " << It.m_Offset << std::endl;
     }
+
+    MyClass inst = MyClass(13);
+
+    std::cout << "Before: " << std::endl; inst.PrintFields();
+    for (auto& It : fields)
+    {
+        int64_t& ref = It.GetFieldRefFromObject<int64_t>(&inst);
+        ref++;
+    }
+    std::cout << "After: " << std::endl; inst.PrintFields();
+
 
     return 0;
 }
