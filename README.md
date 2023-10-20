@@ -12,6 +12,7 @@ A small and simple C++ Reflection Library
 - Access RunTimeTypeInformation (**RTTI**) using little to none Boilerplate code  
 
 ## Examples
+Allocate any type of Class by its Id handle, if a default constructor is available
 ```C++
 #include "ReflectCPP.h"
 using namespace rfl;
@@ -29,6 +30,35 @@ int main()
 
     // Create an instance anytime during runtime
     void* inst = cls.NewInstance();
+}
+```
+
+Access primitive ClassMembers without knowing during the ClassType during compile-time
+```C++
+#include "ReflectCPP.h"
+using namespace rfl;
+
+struct MyClass
+{
+    RFL_CLASS(MyClass,
+    {
+        RFL_FIELD(int, myValue);
+    });
+    MyClass(int val)
+        : myValue(val)
+    {
+    }
+    
+    int myValue;
+};
+
+int main()
+{
+    auto fields = MyClass::StaticClass().GetClassReflector().GetFields();
+    for (auto& It : fields)
+    {
+        std::cout << It.m_Name << " " << (uint32_t)It.m_Type << " " << It.m_Offset << std::endl;
+    }
 }
 ```
 
