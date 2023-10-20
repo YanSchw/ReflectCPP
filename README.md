@@ -11,6 +11,27 @@ A small and simple C++ Reflection Library
 - Access primitive ClassMembers without knowing during the ClassType during compile-time
 - Access RunTimeTypeInformation (**RTTI**) using little to none Boilerplate code  
 
+## Examples
+```C++
+#include "ReflectCPP.h"
+using namespace rfl;
+
+struct MyClass
+{
+    RFL_CLASS(MyClass);
+    MyClass() = default;
+    // ...
+};
+
+int main()
+{
+    Class cls = MyClass::StaticClass();
+
+    // Create an instance anytime during runtime
+    void* inst = cls.NewInstance();
+}
+```
+
 ## Requirements
 - C++17 Compiler
 - Include the ReflectCPP.h anywhere you want to use it
