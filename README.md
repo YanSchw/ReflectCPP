@@ -44,20 +44,22 @@ struct MyClass
     {
         RFL_FIELD(int, myValue);
     });
-    MyClass(int val)
-        : myValue(val)
-    {
-    }
+
+    MyClass(int val) : myValue(val)  { }
     
     int myValue;
 };
 
 int main()
 {
+    MyClass inst = MyClass(13);
     auto fields = MyClass::StaticClass().GetClassReflector().GetFields();
     for (auto& It : fields)
     {
         std::cout << It.m_Name << " " << (uint32_t)It.m_Type << " " << It.m_Offset << std::endl;
+
+        int& ref = It.GetFieldRefFromObject<int>(&inst);
+        ref++;
     }
 }
 ```
