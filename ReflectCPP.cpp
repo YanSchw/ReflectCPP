@@ -82,7 +82,7 @@ namespace rfl
         return Class::None;
     }
 
-    void *Class::NewInstance() const
+    void* Class::NewInstance() const
     {
         return ObjectFactory::Allocate(GetClassID());
     }
