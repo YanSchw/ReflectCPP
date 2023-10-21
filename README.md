@@ -42,7 +42,7 @@ struct MyClass
 {
     RFL_CLASS(MyClass,
     {
-        RFL_FIELD(int, myValue);
+        RFL_FIELD(MyClass, int, myValue);
     });
 
     MyClass(int val) : myValue(val)  { }
